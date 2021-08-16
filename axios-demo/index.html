@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>基本使用</h2>
+        <button class="btn btn-primary">发送GET请求</button>
+        <button class="btn btn-warning">发送POST请求</button>
+        <button class="btn btn-success">发送PUT请求</button>
+        <button class="btn btn-danger">发送DELETE请求</button>
+    </div>
+    <script>
+        const btns = document.querySelectorAll('button')
+        btns[0].onclick = function () {
+            axios({
+                method: 'get',
+                url: 'http://localhost:3000/posts/2',
+                
+            }).then(res => {
+                console.info(res)
+            })
+        }
+        btns[1].onclick = function () {
+            axios({
+                method: 'post',
+                url: 'http://localhost:3000/posts',
+                data: {
+                    id: 4,
+                    title: '444',
+                    author: 'yjt'
+                }
+            }).then(res => {
+                console.info(res)
+                // 返回的是201状态码
+            })
+        }
+        btns[2].onclick = function () {
+            axios({
+                method: 'put',
+                url: 'http://localhost:3000/posts/4',
+                data: {
+                    title: '444',
+                    author: 'zt'
+                }
+            }).then(res => {
+                console.info(res)
+                // 返回的是201状态码
+            })
+        }
+        btns[3].onclick = function () {
+            axios({
+                method: 'delete',
+                url: 'http://localhost:3000/posts/3',
+            }).then(res => {
+                console.info(res)
+                // 返回的是201状态码
+            })
+        }
+    </script>
+</body>
+</html>
